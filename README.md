@@ -23,5 +23,5 @@ When using the daily planner to create a schedule you will see the current date 
 
 # Links:
 
-Deployed url -
+Deployed url - https://nafisa-am.github.io/Work-Day-Scheduler-2022/
 Github url - https://github.com/nafisa-am/Work-Day-Scheduler-2022.git
