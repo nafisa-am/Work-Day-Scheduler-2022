@@ -6,8 +6,9 @@ var today = moment().format("MMMM " + "Do, " + "YYYY");
 var currentDay = document.getElementById("currentDay");
 currentDay.innerHTML = today;
 
-//
+//displays calendar times
 var timeSlot = [
+  ["8AM", "8"],
   ["9AM", "9"],
   ["10AM", "10"],
   ["11AM", "11"],
@@ -52,3 +53,11 @@ for (var i = 0; i < timeSlot.length; i++) {
   timeContainer.append(section);
   saveBtnIds.push(`${timeSlot[i][0]}`);
 }
+
+//allows editing on calendar and saves to local storage
+saveBtnIds.forEach((id) => {
+  $(`#${id}`).on("click", function () {
+    var task = $(`#input${id}`).val();
+    localStorage.setItem(`input${id}`, task);
+  });
+});
