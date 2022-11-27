@@ -41,4 +41,42 @@ window.setInterval(function () {
 var displayTimeBlocks = function () {
     localTasks();
 
-}
+  // For loop runs for every hour stored in timeArray
+  for (i = 0; i < timeArray.length; i++) {
+    
+    var taskRow = document.createElement("div");
+    taskRow.classList = "row time-block justify-content-center";
+    //sets id of each elemnt to index value
+    taskRow.id = timeArray.indexOf(timeArray[i]);
+
+    // Creates hour time-slots
+
+    var timeSlot = document.createElement("h4");
+    timeSlot.classList = "hour col-md-2";
+    timeSlot.id = timeArray.indexOf(timeArray[i]);
+    timeSlot.textContent = timeArray[i];
+    
+    taskRow.appendChild(timeSlot);
+
+    // Creates input field
+    var taskInput = document.createElement("input");
+    taskInput.classList = "time-block clearable col-md-9 description p-0";
+    taskInput.id = "input" + timeArray.indexOf(timeArray[i]);
+  
+    // Space for local storage
+    
+    if (timeBlock[i]) {
+    taskInput.value = timeBlock[i];
+    }
+    taskRow.appendChild(taskInput);
+
+    taskRow.appendChild(taskInput);
+
+
+    // Creates the save button
+    var saveBtn = document.createElement("button");
+    saveBtn.classList = "saveBtn col-md-1";
+    saveBtn.id = "btn" + timeArray.indexOf(timeArray[i]);
+    saveBtn.innerHTML = "<i class='far fa-save fa-lg'></i>";
+    
+  }}
