@@ -79,4 +79,42 @@ var displayTimeBlocks = function () {
     saveBtn.id = "btn" + timeArray.indexOf(timeArray[i]);
     saveBtn.innerHTML = "<i class='far fa-save fa-lg'></i>";
     
-  }}
+    
+    taskRow.appendChild(saveBtn);
+    
+    domContainer.appendChild(taskRow);
+
+    if (currentTime === timeArray[i]){
+    taskInput.classList = "present col-md-9 description p-0"
+    }
+    
+    if (currentTime < timeArray[i]){
+        taskInput.classList = "future col-md-9 description p-0"
+        }
+        
+    if (currentTime > timeArray[i]){
+        taskInput.classList = "past col-md-9 description p-0"
+        }
+    }
+  };
+
+
+displayTimeBlocks();
+
+// Save button for saving 
+$("button").on("click", function () {
+    var tempTask = [];
+    for (var i = 0; i < timeArray.length; i++){
+        tempTask.push(document.getElementsByTage("input")[i].value);
+    }
+    timeBlock = tempTask;
+    localStorage.setItem("tasks", JSON.stringify(timeBlock));
+});
+
+//function to retrieve from local storage
+function localTasks() {
+    if (JSON.parse(localStorage.getItem("tasks"))){
+      timeBlock = JSON.parse(localStorage.getItem("tasks"));
+    }
+  }
+
